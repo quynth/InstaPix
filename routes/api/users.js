@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const router = express.Router();
-const User = require('../../models/User');
+const User = require('../../models/user');
 
 //@route POST api/users/register
 //@desc Register a users
