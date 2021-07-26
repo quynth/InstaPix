@@ -13,6 +13,8 @@ const keys = require('../../config/keys');
 //@access public
 
 router.post('/register', (req, res) => {
+  //validation
+  
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
