@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const keys = require('./config/keys');
 const users = require ('./routes/api/users');
-const profile = require ('./routes/api/profile');
+const profile = require('./routes/api/profile');
 const posts = require ('./routes/api/posts');
 const app = express();
 
