@@ -4,7 +4,7 @@ import './App.css';
 import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
-
+import Register from './components/auth/Register';
 
 class App extends Component {
 
@@ -13,7 +13,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <Router exact path="/" component={Landing} />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
           <Footer />
         </div>
       </Router>
