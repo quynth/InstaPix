@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Register extends Component {
   constructor() {
@@ -16,6 +17,22 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  onSubmit(e){
+    e.preventDefault();
+
+    const newUser = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
+    };
+
+    axios
+      .post('/api/users/register',newUser)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.response.data));
+  }
+
   render() {
     return (
       <div className="register">
@@ -24,7 +41,7 @@ class Register extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your InstaPix account</p>
-              <form action="create-profile.html">
+              <form onSubmit={this.onSubmit.bind(this)}>
                 <div className="form-group">
                   <input
                     type="text"
