@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import classnames from 'classnames';
 import { registerUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
@@ -32,10 +31,7 @@ class Register extends Component {
     };
 
     this.props.registerUser(newUser);
-    // axios
-    //  .post('/api/users/register', newUser)
-    //  .then((res) => console.log(res.data))
-    //   .catch((err) => this.setState({ errors: err.response.data }));
+    
   }
 
   render() {
