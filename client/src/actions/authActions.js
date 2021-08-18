@@ -13,3 +13,15 @@ export const registerUser = (userData, history) => dispatch => {
         }));
 };
 
+//Login user
+export const loginUser = userData => dispatch => {
+  axios
+  .post('/api/users/login', userData)
+  .then(res => console.log(res.data))
+  .catch(err => 
+   dispatch({
+     type:GET_ERRORS,
+     payload: err.response.data
+     }));
+
+}
