@@ -12,3 +12,4 @@ export const registerUser = (userData, history) => dispatch => {
         payload: err.response.data
         }));
 };
+
