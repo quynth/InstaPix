@@ -13,5 +13,4 @@ export const registerUser = (userData, history) => dispatch => {
         }));
 };
 
-//logout user
-export const 
+
