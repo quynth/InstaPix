@@ -12,3 +12,6 @@ export const registerUser = (userData, history) => dispatch => {
         payload: err.response.data
         }));
 };
+
+//logout user
+export const 
