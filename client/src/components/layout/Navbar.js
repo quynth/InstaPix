@@ -13,7 +13,7 @@ class Navbar extends Component {
 
   render() {
 
-    const {isAuthenicated, user} = this.props.auth;
+    const {isAuthenticated, user} = this.props.auth;
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
@@ -34,14 +34,30 @@ class Navbar extends Component {
       //waiting for Kal to update her code so i can fix this
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-        <Link className="nav-link" to="/register">
-          Sign Up
+        <Link className="nav-link" to="/feed">
+          Post Feed
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/login">
-          Login
+        <Link className="nav-link" to="/dashboard">
+          Dashboard
         </Link>
+      </li>
+      <li className = "nav-item">
+        <a 
+          href = "/"
+          onClick = {this.onLogoutClick.bind(this)}
+          className = "nav-link"
+          >
+            <img  
+              className = "rounded-circle"
+              src = {user.avatar}
+              alt = {user.name}
+              style = {{ width: "25px", marginRight:"5px"}}
+              title= "You must have a gravatar connected to your email to display an image"
+              />
+              Logout
+          </a>
       </li>
     </ul>
     );
@@ -64,16 +80,16 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <a className="nav-link" href="profiles.html"></a>
+                <a className="nav-link" href="profiles.html"> Profiles </a>
               </li>
             </ul>
 
-            {isAuthenicated ? authLinks : guestLinks}
+            {isAuthenticated ? authLinks : guestLinks}
 
           </div>
         </div>
       </nav>
-    );
+    )
   }
 }
 
