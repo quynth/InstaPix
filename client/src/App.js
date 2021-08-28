@@ -13,19 +13,30 @@ import setAuthToken from './utils/setAuthToken';
 import { SET_CURRENT_USER } from './actions/types';
 import { logoutUser } from './actions/authActions';
 
+// import PrivateRoute from "./components/common/PrivateRoute";   Uncomment after moment issue is fixed
+// import { clearCurrentProfile } from "./actions/profileActions";
+// import Dashboard from "./components/dashboard/Dashboard";
+// import CreateProfile from "./components/create-profile/CreateProfile";
+// import EditProfile from "./components/edit-profile/EditProfile";
+// import AddExperience from "./components/add-credentials/AddExperience";
+// import AddEducation from "./components/add-credentials/AddEducation";
+// import AddPicture from "./components/add-credentials/AddPicture";
+// import Profiles from "./components/profiles/Profiles";
+// import Profile from "./components/profile/Profile";
+// import Posts from "./components/posts/Posts";
+// import Post from "./components/post/Post";
+// import NotFound from "./components/not-found/NotFound";
+
 if (localStorage.jwtToken) {
-  
   //Decode token
   const decoded = jwt_decode(localStorage.jwtToken);
 
   //Check for expired token
-  const currentTime = Date.now() /1000;
+  const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
-    store.dispatch(logoutUser())
-    window.location.href='/login';
-    
+    store.dispatch(logoutUser());
+    window.location.href = '/login';
   } else {
-
     //Set token to auth header
     setAuthToken(localStorage.jwtToken);
 
@@ -44,8 +55,57 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+            <div className="container">
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              {/* <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/profile/:handle" component={Profile} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/edit-profile"
+                  component={EditProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-experience"
+                  component={AddExperience}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-education"
+                  component={AddEducation}
+                />
+                </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-picture"
+                  component={AddPicture}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/feed" component={Posts} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/post/:id" component={Post} />
+              </Switch>
+              <Route exact path="/not-found" component={NotFound} /> */}
+            </div>
             <Footer />
           </div>
         </Router>
