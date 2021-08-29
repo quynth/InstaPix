@@ -30,13 +30,13 @@ class AddPicture extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const expData = {
+    const pixData = {
       title: this.state.title,
       url: this.state.url,
       date: this.state.date,
     };
 
-    this.props.addPicture(expData, this.props.history);
+    this.props.addPicture(pixData, this.props.history);
   }
 
   onChange(e) {
