@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import { SET_ERROR, SET_USER } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 // Register User
@@ -10,7 +10,7 @@ export const registerUser = (userData, history) => (dispatch) => {
     .then((res) => history.push('/login'))
     .catch((err) =>
       dispatch({
-        type: GET_ERRORS,
+        type: SET_ERROR,
         payload: err.response.data,
       })
     );
@@ -31,22 +31,21 @@ export const loginUser = (userData) => (dispatch) => {
       //Decode the token
       const decoded = jwt_decode(token);
       dispatch({
-        type: SET_CURRENT_USER,
+        type: SET_USER,
         payload: decoded,
       });
     })
 
     .catch((err) =>
       dispatch({
-        type: GET_ERRORS,
+        type: SET_ERROR,
         payload: err.response.data,
       })
     );
 };
 
 //logout user
-export const logoutUser = () => dispatch => {
-  
+export const logoutUser = () => (dispatch) => {
   //remove from localstorage
   localStorage.removeItem('jwtToken');
 
@@ -55,8 +54,7 @@ export const logoutUser = () => dispatch => {
 
   //clear out user data from redux store
   dispatch({
-    type: SET_CURRENT_USER,
-    payload: {}
-  })
-
-}
+    type: SET_USER,
+    payload: {},
+  });
+};

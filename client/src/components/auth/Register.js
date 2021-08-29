@@ -17,6 +17,9 @@ class Register extends Component {
       errors: {},
       info: 'This site uses Gravatar so if you want a profile image, use a Gravatar email',
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
@@ -100,11 +103,10 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
   errors: state.errors,
 });
 

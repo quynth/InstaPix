@@ -14,6 +14,9 @@ class Login extends Component {
       password: '',
       errors: {},
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
@@ -23,12 +26,12 @@ class Login extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const newUser = {
+    const user = {
       email: this.state.email,
       password: this.state.password,
     };
 
-    this.props.loginUser(newUser);
+    this.props.loginUser(user);
   }
 
   componentDidMount() {
