@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
-import SelectListGroup from '../common/SelectListGroup';
 import { createProfile, getCurrentProfile } from '../../actions/profileActions';
 import isEmpty from '../../validation/is-empty';
 
@@ -20,7 +19,6 @@ class CreateProfile extends Component {
       bio: '',
       twitter: '',
       facebook: '',
-      linkedin: '',
       youtube: '',
       instagram: '',
       errors: {},
@@ -42,9 +40,6 @@ class CreateProfile extends Component {
     if (nextProps.profile.profile) {
       const profile = nextProps.profile.profile;
 
-      // // Bring skills array back to CSV
-      // const skillsCSV = profile.skills.join(',');
-
       // If profile field doesnt exist, make empty string
       profile.website = !isEmpty(profile.website) ? profile.website : '';
       profile.location = !isEmpty(profile.location) ? profile.location : '';
@@ -55,9 +50,6 @@ class CreateProfile extends Component {
         : '';
       profile.facebook = !isEmpty(profile.social.facebook)
         ? profile.social.facebook
-        : '';
-      profile.linkedin = !isEmpty(profile.social.linkedin)
-        ? profile.social.linkedin
         : '';
       profile.youtube = !isEmpty(profile.social.youtube)
         ? profile.social.youtube
@@ -74,7 +66,6 @@ class CreateProfile extends Component {
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,
-        linkedin: profile.linkedin,
         youtube: profile.youtube,
         instagram: profile.instagram,
       });
@@ -91,7 +82,6 @@ class CreateProfile extends Component {
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
       youtube: this.state.youtube,
       instagram: this.state.instagram,
     };
@@ -127,15 +117,6 @@ class CreateProfile extends Component {
             value={this.state.facebook}
             onChange={this.onChange}
             error={errors.facebook}
-          />
-
-          <InputGroup
-            placeholder="Linkedin Profile URL"
-            name="linkedin"
-            icon="fab fa-linkedin"
-            value={this.state.linkedin}
-            onChange={this.onChange}
-            error={errors.linkedin}
           />
 
           <InputGroup

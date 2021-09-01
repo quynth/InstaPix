@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
-import SelectListGroup from '../common/SelectListGroup';
 import { createProfile } from '../../actions/profileActions';
 
 class CreateProfile extends Component {
@@ -19,7 +18,6 @@ class CreateProfile extends Component {
       bio: '',
       twitter: '',
       facebook: '',
-      linkedin: '',
       youtube: '',
       instagram: '',
       errors: {},
@@ -45,7 +43,6 @@ class CreateProfile extends Component {
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
       youtube: this.state.youtube,
       instagram: this.state.instagram,
     };
@@ -81,15 +78,6 @@ class CreateProfile extends Component {
             value={this.state.facebook}
             onChange={this.onChange}
             error={errors.facebook}
-          />
-
-          <InputGroup
-            placeholder="Linkedin Profile URL"
-            name="linkedin"
-            icon="fab fa-linkedin"
-            value={this.state.linkedin}
-            onChange={this.onChange}
-            error={errors.linkedin}
           />
 
           <InputGroup

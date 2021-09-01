@@ -5,13 +5,11 @@ const passport = require('passport');
 
 // Post model
 const Post = require('../../models/Post');
-
 // Profile model
 const Profile = require('../../models/Profile');
 
 // Validation
 const validatePostInput = require('../../validation/post');
-
 // @route   GET api/posts
 // @desc    Get posts
 // @access  Public
@@ -49,8 +47,7 @@ router.post(
     }
 
     const newPost = new Post({
-      image: req.body.image,
-      caption: req.body.caption,
+      text: req.body.text,
       name: req.body.name,
       avatar: req.body.avatar,
       user: req.user.id,

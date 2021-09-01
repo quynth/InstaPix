@@ -13,8 +13,9 @@ class Picture extends Component {
     const picture = this.props.picture.map((pix) => (
       <tr key={pix._id}>
         <td>{pix.title}</td>
+        <td>{pix.url}</td>
         <td>
-          <Moment format="MM/DD/YYYY">{pix.date}</Moment>
+          <Moment format="MM/DD/YYYY">{pix.taken}</Moment>
         </td>
         <td>
           <button
@@ -34,6 +35,7 @@ class Picture extends Component {
             <tr>
               <th>Caption</th>
               <th>Date Taken</th>
+              <th>URL</th>
               <th />
             </tr>
             {picture}
