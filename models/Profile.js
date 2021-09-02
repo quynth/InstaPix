@@ -32,6 +32,7 @@ const ProfileSchema = new Schema({
       },
       taken: {
         type: Date,
+        default: true,
       },
     },
   ],

@@ -15,7 +15,7 @@ const validatePictureInput = require('../../validation/picture');
 //@route GET api/profile
 //@desc Get current users profile
 //@access Private
-router.get('/all', (req, res) => {
+router.get('/', (req, res) => {
   const errors = {};
 
   Profile.find()
