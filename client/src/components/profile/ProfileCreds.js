@@ -8,14 +8,12 @@ class ProfileCreds extends Component {
     const pixItems = picture.map((pix) => (
       <li key={pix._id} className="list-group-item">
         <p>
-          <Moment format="YYYY/MM/DD">{pix.taken}</Moment>
+          <img src={`${pix.url}`} width="250" height="350" overflow="hidden" />
         </p>
         <p>
-          <strong>Caption:</strong> {pix.title}
+          Taken on <Moment format="YYYY/MM/DD">{pix.taken}</Moment>
         </p>
-        <p>
-          <strong>URL:</strong> {pix.url}
-        </p>
+        <p>{pix.title}</p>
       </li>
     ));
 

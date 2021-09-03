@@ -15,6 +15,7 @@ class ProfileItem extends Component {
           </div>
           <div className="col-lg-6 col-md-4 col-8">
             <h3>{profile.user.name}</h3>
+            <h5>@{profile.handle}</h5>
             <p>
               {isEmpty(profile.location) ? null : (
                 <span>{profile.location}</span>
