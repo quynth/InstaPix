@@ -35,10 +35,10 @@ class Picture extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>Picture</th>
               <th>Caption</th>
+              <th>Picture</th>
               <th>Date Taken</th> 
-              <th>URL</th>
+              <th>Delete</th>
               <th />
             </tr>
             {picture}
