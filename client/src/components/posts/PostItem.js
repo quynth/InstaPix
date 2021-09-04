@@ -46,6 +46,9 @@ class PostItem extends Component {
           </div>
           <div className="col-md-10">
             <p className="lead">{post.text}</p>
+            
+            <img src={post.url} width="250" height="350" overflow="hidden" />
+
             {showActions ? (
               <span>
                 <button

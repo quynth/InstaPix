@@ -9,6 +9,8 @@ class PostForm extends Component {
     super(props);
     this.state = {
       text: '',
+      url: '',
+      taken: '',
       errors: {}
     };
 
@@ -30,6 +32,7 @@ class PostForm extends Component {
     const newPost = {
       text: this.state.text,
       name: user.name,
+      url: this.state.url,
       avatar: user.avatar
     };
 
@@ -57,6 +60,14 @@ class PostForm extends Component {
                   value={this.state.text}
                   onChange={this.onChange}
                   error={errors.text}
+                />
+
+                <TextAreaFieldGroup
+                  placeholder="Post a picture"
+                  name="url"
+                  value={this.state.url}
+                  onChange={this.onChange}
+                  error={errors.url}
                 />
               </div>
               <button type="submit" className="btn btn-dark">
