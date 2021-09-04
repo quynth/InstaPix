@@ -148,6 +148,35 @@ router.post(
   }
 );
 
+//route GET api/profile/allpictures
+//desc Get all posted pictures
+//@access Public
+router.get('/allpictures', (req,res) => {
+  const errors = {};
+
+  Profile.find()
+  .populate('user', ['name', 'avatar'])
+  .then((profiles) => {
+      if (!profiles) {
+        errors.nopictures = 'There are no pictures';
+        return res.status(404).json(errors);
+      }
+      const result = profiles.filter(
+        function hasPictures() {
+          for (let i = 0; i < profiles.length; i++){
+            if(profiles[i].picture.length > 0){
+              return profiles[i].picture;
+            };
+          };
+        }
+      )
+
+      res.json(result);
+  })
+  .catch((err) => res.status(404).json(err));
+
+});
+
 // @route   POST api/profile/picture
 // @desc    Add picture to profile
 // @access  Private

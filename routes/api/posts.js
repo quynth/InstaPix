@@ -10,6 +10,7 @@ const Profile = require('../../models/Profile');
 
 // Validation
 const validatePostInput = require('../../validation/post');
+
 // @route   GET api/posts
 // @desc    Get posts
 // @access  Public
@@ -19,6 +20,7 @@ router.get('/', (req, res) => {
     .then((posts) => res.json(posts))
     .catch((err) => res.status(404).json({ nopostsfound: 'No posts found' }));
 });
+
 
 // @route   GET api/posts/:id
 // @desc    Get post by id
