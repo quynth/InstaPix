@@ -20,6 +20,7 @@ class ProfileItem extends Component {
               {isEmpty(profile.location) ? null : (
                 <span>{profile.location}</span>
               )}
+              , {isEmpty(profile.locationState) ? null : profile.locationState}
             </p>
             <Link to={`/profile/${profile.handle}`} className="btn btn-info">
               View Profile

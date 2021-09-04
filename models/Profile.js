@@ -17,6 +17,9 @@ const ProfileSchema = new Schema({
   location: {
     type: String,
   },
+  locationState: {
+    type: String,
+  },
   bio: {
     type: String,
   },
@@ -31,8 +34,8 @@ const ProfileSchema = new Schema({
         default: true,
       },
       taken: {
-         type: Date,
-         default: new Date("11/20/2014 04:11"),
+        type: Date,
+        default: new Date('11/20/2014 04:11'),
       },
     },
   ],

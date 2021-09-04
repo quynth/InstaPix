@@ -6,6 +6,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
 import { createProfile, getCurrentProfile } from '../../actions/profileActions';
+import SelectListGroup from '../common/SelectListGroup';
 import isEmpty from '../../validation/is-empty';
 
 class CreateProfile extends Component {
@@ -16,6 +17,7 @@ class CreateProfile extends Component {
       handle: '',
       website: '',
       location: '',
+      locationstate: '',
       bio: '',
       twitter: '',
       facebook: '',
@@ -43,6 +45,9 @@ class CreateProfile extends Component {
       // If profile field doesnt exist, make empty string
       profile.website = !isEmpty(profile.website) ? profile.website : '';
       profile.location = !isEmpty(profile.location) ? profile.location : '';
+      profile.location = !isEmpty(profile.locationstate)
+        ? profile.locationstate
+        : '';
       profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
       profile.social = !isEmpty(profile.social) ? profile.social : {};
       profile.twitter = !isEmpty(profile.social.twitter)
@@ -63,6 +68,7 @@ class CreateProfile extends Component {
         handle: profile.handle,
         website: profile.website,
         location: profile.location,
+        locationState: profile.locationState,
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,
@@ -79,6 +85,7 @@ class CreateProfile extends Component {
       handle: this.state.handle,
       website: this.state.website,
       location: this.state.location,
+      locationState: this.state.locationState,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -139,7 +146,69 @@ class CreateProfile extends Component {
         </div>
       );
     }
-
+    // Select options for state
+    const options = [
+      { label: '* Select your state', value: 0 },
+      { label: 'ALABAMA', value: 'AL' },
+      { label: 'ALASKA', value: 'AK' },
+      { label: 'AMERICAN SAMOA', value: 'AS' },
+      { label: 'ARIZONA', value: 'AZ' },
+      { label: 'ARKANSAS', value: 'AR' },
+      { label: 'CALIFORNIA', value: 'CA' },
+      { label: 'COLORADO', value: 'CO' },
+      { label: 'CONNECTICUT', value: 'CT' },
+      { label: 'DELAWARE', value: 'DE' },
+      { label: 'DISTRICT OF COLUMBIA', value: 'DC' },
+      { label: 'FEDERATED STATES OF MICRONESIA', value: 'FM' },
+      { label: 'FLORIDA', value: 'FL' },
+      { label: 'GEORGIA', value: 'GA' },
+      { label: 'GUAM', value: 'GU' },
+      { label: 'HAWAII', value: 'HI' },
+      { label: 'IDAHO', value: 'ID' },
+      { label: 'ILLINOIS', value: 'IL' },
+      { label: 'INDIANA', value: 'IN' },
+      { label: 'IOWA', value: 'IA' },
+      { label: 'KANSAS', value: 'KS' },
+      { label: 'KENTUCKY', value: 'KY' },
+      { label: 'LOUISIANA', value: 'LA' },
+      { label: 'MAINE', value: 'ME' },
+      { label: 'MARSHALL ISLANDS', value: 'MH' },
+      { label: 'MARYLAND', value: 'MD' },
+      { label: 'MASSACHUSETTS', value: 'MA' },
+      { label: 'MICHIGAN', value: 'MI' },
+      { label: 'MINNESOTA', value: 'MN' },
+      { label: 'MISSISSIPPI', value: 'MS' },
+      { label: 'MISSOURI', value: 'MO' },
+      { label: 'MONTANA', value: 'MT' },
+      { label: 'NEBRASKA', value: 'NE' },
+      { label: 'NEVADA', value: 'NV' },
+      { label: 'NEW HAMPSHIRE', value: 'NH' },
+      { label: 'NEW JERSEY', value: 'NJ' },
+      { label: 'NEW MEXICO', value: 'NM' },
+      { label: 'NEW YORK', value: 'NY' },
+      { label: 'NORTH CAROLINA', value: 'NC' },
+      { label: 'NORTH DAKOTA', value: 'ND' },
+      { label: 'NORTHERN MARIANA ISLANDS', value: 'MP' },
+      { label: 'OHIO', value: 'OH' },
+      { label: 'OKLAHOMA', value: 'OK' },
+      { label: 'OREGON', value: 'OR' },
+      { label: 'PALAU', value: 'PW' },
+      { label: 'PENNSYLVANIA', value: 'PA' },
+      { label: 'PUERTO RICO', value: 'PR' },
+      { label: 'RHODE ISLAND', value: 'RI' },
+      { label: 'SOUTH CAROLINA', value: 'SC' },
+      { label: 'SOUTH DAKOTA', value: 'SD' },
+      { label: 'TENNESSEE', value: 'TN' },
+      { label: 'TEXAS', value: 'TX' },
+      { label: 'UTAH', value: 'UT' },
+      { label: 'VERMONT', value: 'VT' },
+      { label: 'VIRGIN ISLANDS', value: 'VI' },
+      { label: 'VIRGINIA', value: 'VA' },
+      { label: 'WASHINGTON', value: 'WA' },
+      { label: 'WEST VIRGINIA', value: 'WV' },
+      { label: 'WISCONSIN', value: 'WI' },
+      { label: 'WYOMING', value: 'WY' },
+    ];
     return (
       <div className="create-profile">
         <div className="container">
@@ -173,8 +242,19 @@ class CreateProfile extends Component {
                   value={this.state.location}
                   onChange={this.onChange}
                   error={errors.location}
-                  info="City or city & state suggested (eg. Boston, MA)"
+                  info="City"
                 />
+
+                <SelectListGroup
+                  placeholder="State"
+                  name="locationState"
+                  value={this.state.locationState}
+                  onChange={this.onChange}
+                  options={options}
+                  error={errors.locationState}
+                  info="State"
+                />
+
                 <TextAreaFieldGroup
                   placeholder="Short Bio"
                   name="bio"

@@ -112,6 +112,8 @@ router.post(
     if (req.body.handle) profileFields.handle = req.body.handle;
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.location) profileFields.location = req.body.location;
+    if (req.body.locationState)
+      profileFields.locationState = req.body.locationState;
     if (req.body.bio) profileFields.bio = req.body.bio;
 
     // Social
@@ -151,30 +153,27 @@ router.post(
 //route GET api/profile/allpictures
 //desc Get all posted pictures
 //@access Public
-router.get('/allpictures', (req,res) => {
+router.get('/allpictures', (req, res) => {
   const errors = {};
 
   Profile.find()
-  .populate('user', ['name', 'avatar'])
-  .then((profiles) => {
+    .populate('user', ['name', 'avatar'])
+    .then((profiles) => {
       if (!profiles) {
         errors.nopictures = 'There are no pictures';
         return res.status(404).json(errors);
       }
-      const result = profiles.filter(
-        function hasPictures() {
-          for (let i = 0; i < profiles.length; i++){
-            if(profiles[i].picture.length > 0){
-              return profiles[i].picture;
-            };
-          };
+      const result = profiles.filter(function hasPictures() {
+        for (let i = 0; i < profiles.length; i++) {
+          if (profiles[i].picture.length > 0) {
+            return profiles[i].picture;
+          }
         }
-      )
+      });
 
       res.json(result);
-  })
-  .catch((err) => res.status(404).json(err));
-
+    })
+    .catch((err) => res.status(404).json(err));
 });
 
 // @route   POST api/profile/picture
@@ -202,7 +201,7 @@ router.post(
         url: req.body.url,
         taken: new Date(req.body.taken),
       };
-      
+
       // Add to pix array
       profile.picture.unshift(newPix);
 
