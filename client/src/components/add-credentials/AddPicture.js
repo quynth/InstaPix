@@ -33,7 +33,7 @@ class AddPicture extends Component {
     const pixData = {
       title: this.state.title,
       url: this.state.url,
-      taken: this.state.taken,
+      // taken: this.state.taken,
     };
 
     this.props.addPicture(pixData, this.props.history);
@@ -81,14 +81,14 @@ class AddPicture extends Component {
                   onChange={this.onChange}
                   error={errors.url}
                 />
-                <h6>When was this photo taken?</h6>
+                {/* <h6>When was this photo taken?</h6>
                 <TextFieldGroup
                   name="taken"
                   type="date"
                   value={this.state.taken}
                   onChange={this.onChange}
                   error={errors.taken}
-                />
+                /> */}
                 <input
                   type="submit"
                   value="Submit"

@@ -171,7 +171,7 @@ router.post(
       const newPix = {
         title: req.body.title,
         url: req.body.url,
-        date: req.body.date,
+        // date: req.body.date,
       };
 
       // Add to pix array

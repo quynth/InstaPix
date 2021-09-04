@@ -11,9 +11,9 @@ module.exports = function validatePictureInput(data) {
     errors.url = 'Picture URL field is required';
   }
 
-  if (isEmpty(data.taken)) {
-    errors.taken = 'Taken date field is required';
-  }
+  // if (isEmpty(data.taken)) {
+  //   errors.taken = 'Taken date field is required';
+  // }
 
   return {
     errors,
