@@ -13,6 +13,10 @@ const PostSchema = new Schema({
   name: {
     type: String,
   },
+  date: {
+    type: Date,
+  },
+
   url: {
     type: String,
   },

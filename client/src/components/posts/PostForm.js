@@ -10,7 +10,7 @@ class PostForm extends Component {
     this.state = {
       text: '',
       url: '',
-      taken: '',
+      date: '',
       errors: {}
     };
 

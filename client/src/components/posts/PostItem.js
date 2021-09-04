@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { deletePost, addLike, removeLike } from '../../actions/postActions';
+import Moment from 'react-moment';
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -43,6 +44,8 @@ class PostItem extends Component {
             </Link>
             <br />
             <p className="text-center">{post.name}</p>
+            <Moment format="YYYY-MM-DD HH:mm:ss">{post.date}</Moment>
+
           </div>
           <div className="col-md-10">
             <p className="lead">{post.text}</p>
