@@ -63,7 +63,7 @@ class PostForm extends Component {
                 />
 
                 <TextAreaFieldGroup
-                  placeholder="Post a picture"
+                  placeholder="Post a picture/Please enter a URL"
                   name="url"
                   value={this.state.url}
                   onChange={this.onChange}
