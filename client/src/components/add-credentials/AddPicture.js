@@ -4,6 +4,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addPicture } from '../../actions/profileActions';
+//import moment from 'moment';
 
 class AddPicture extends Component {
   constructor(props) {
@@ -33,9 +34,8 @@ class AddPicture extends Component {
     const pixData = {
       title: this.state.title,
       url: this.state.url,
-      // taken: this.state.taken,
+      taken: this.state.taken,
     };
-
     this.props.addPicture(pixData, this.props.history);
   }
 
@@ -81,14 +81,25 @@ class AddPicture extends Component {
                   onChange={this.onChange}
                   error={errors.url}
                 />
-                {/* <h6>When was this photo taken?</h6>
+
+
+                {/*<input  name="taken"  type="date" 
+                 disabled={ this.state.mode } 
+                value={ moment(this.state.taken).format("YYYY-MM-DD") } 
+                 className="form-control"  onChange={ this.onChange } />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+                */}
+                
+
+                <h6>When was this photo taken?</h6>
                 <TextFieldGroup
                   name="taken"
                   type="date"
                   value={this.state.taken}
                   onChange={this.onChange}
                   error={errors.taken}
-                /> */}
+                /> 
+
                 <input
                   type="submit"
                   value="Submit"

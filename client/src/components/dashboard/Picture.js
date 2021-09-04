@@ -14,9 +14,9 @@ class Picture extends Component {
       <tr key={pix._id}>
         <td>{pix.title}</td>
         <td>{pix.url}</td>
-        {/* <td>
-          <Moment format="MM/DD/YYYY">{pix.taken}</Moment>
-        </td> */}
+          <td>
+          <Moment format="YYYY/MM/DD">{pix.taken}</Moment>
+          </td> 
         <td>
           <button
             onClick={this.onDeleteClick.bind(this, pix._id)}
@@ -34,7 +34,7 @@ class Picture extends Component {
           <thead>
             <tr>
               <th>Caption</th>
-              {/* <th>Date Taken</th> */}
+                <th>Date Taken</th> 
               <th>URL</th>
               <th />
             </tr>

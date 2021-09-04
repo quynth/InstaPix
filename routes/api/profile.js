@@ -200,9 +200,9 @@ router.post(
       const newPix = {
         title: req.body.title,
         url: req.body.url,
-        // date: req.body.date,
+        taken: new Date(req.body.taken),
       };
-
+      
       // Add to pix array
       profile.picture.unshift(newPix);
 

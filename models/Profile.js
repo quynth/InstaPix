@@ -30,10 +30,10 @@ const ProfileSchema = new Schema({
         type: String,
         default: true,
       },
-      // taken: {
-      //   type: Date,
-      //   default: true,
-      // },
+      taken: {
+         type: Date,
+         default: new Date("11/20/2014 04:11"),
+      },
     },
   ],
   social: {
