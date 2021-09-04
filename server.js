@@ -22,13 +22,17 @@ mongoose
   app.use(passport.initialize());
   require('./config/passport')(passport);
 
-// First route
-app.get('/', (req, res) => res.send('Hello World!'));
-
 //use routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
-const port = 5000;
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static('client/build'));
+  app.get('*', (req,res) => {
+    res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'))
+  })
+}
+
+const port = process.env.port || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
