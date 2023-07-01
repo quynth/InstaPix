@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PostItem from './PostItem';
+import './post.css';
+
 
 class PostFeed extends Component {
   render() {

@@ -45,34 +45,52 @@ class PostItem extends Component {
             <br />
             <p className="text-center">{post.name}</p>
             <Moment format="YYYY-MM-DD HH:mm:ss">{post.date}</Moment>
-
           </div>
           <div className="col-md-10">
-            <p className="lead">{post.text}</p>
-            
-            <img src={post.url} width="250" height="350" overflow="hidden" />
+            <div
+              className="post-content"
+              style={{
+                maxHeight: '300px',
+                overflowY: 'auto',
+              }}
+            >
+              <p className="lead">{post.text}</p>
+              <img src={post.url} width="250" height="350" alt="Post" />
+            </div>
 
             {showActions ? (
               <span>
-                <button
-                  onClick={this.onLikeClick.bind(this, post._id)}
-                  type="button"
-                  className="btn btn-light mr-1"
+                <input
+                  type="checkbox"
+                  onChange={this.onLikeClick.bind(this, post._id)}
+                  checked={this.findUserLike(post.likes)}
+                  className="btn-check"
+                  id={`likeCheckbox_${post._id}`}
+                />
+                <label
+                  className={classnames('btn btn-light mr-1', {
+                    'btn-info': this.findUserLike(post.likes),
+                  })}
+                  htmlFor={`likeCheckbox_${post._id}`}
                 >
-                  <i
-                    className={classnames('fas fa-thumbs-up', {
-                      'text-info': this.findUserLike(post.likes)
-                    })}
-                  />
-                  <span className="badge badge-light">{post.likes.length}</span>
-                </button>
-                <button
-                  onClick={this.onUnlikeClick.bind(this, post._id)}
-                  type="button"
+                  <i className="fas fa-thumbs-up" />
+                  <span className="badge badge-light">
+                    {post.likes.length}
+                  </span>
+                </label>
+                <input
+                  type="checkbox"
+                  onChange={this.onUnlikeClick.bind(this, post._id)}
+                  checked={!this.findUserLike(post.likes)}
+                  className="btn-check"
+                  id={`unlikeCheckbox_${post._id}`}
+                />
+                <label
                   className="btn btn-light mr-1"
+                  htmlFor={`unlikeCheckbox_${post._id}`}
                 >
-                  <i className="text-secondary fas fa-thumbs-down" />
-                </button>
+                  <i className="fas fa-thumbs-down" />
+                </label>
                 <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
                   Comments
                 </Link>
@@ -95,7 +113,7 @@ class PostItem extends Component {
 }
 
 PostItem.defaultProps = {
-  showActions: true
+  showActions: true,
 };
 
 PostItem.propTypes = {
@@ -103,13 +121,15 @@ PostItem.propTypes = {
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { deletePost, addLike, removeLike })(
-  PostItem
-);
+export default connect(mapStateToProps, {
+  deletePost,
+  addLike,
+  removeLike,
+})(PostItem);

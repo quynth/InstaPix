@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import { addPost } from '../../actions/postActions';
+import postImage from '../../img/post.png';
 
 class PostForm extends Component {
   constructor(props) {
@@ -53,9 +54,21 @@ class PostForm extends Component {
           <div className="card-header bg-info text-white">Say Something...</div>
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
+            <img
+                src={postImage}
+                alt="Post"
+                style={{
+                  width: '100px',
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                }}
+              />
+              <label>Create a post and/or post a picture</label>
               <div className="form-group">
                 <TextAreaFieldGroup
                   placeholder="Create a post"
+          
                   name="text"
                   value={this.state.text}
                   onChange={this.onChange}
@@ -91,5 +104,6 @@ const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
+
 
 export default connect(mapStateToProps, { addPost })(PostForm);

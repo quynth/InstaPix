@@ -61,23 +61,36 @@ class Login extends Component {
                 Sign in to your InstaPix account
               </p>
               <form noValidate onSubmit={this.onSubmit.bind(this)}>
-                <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.onChange.bind(this)}
-                  error={errors.email}
-                />
-
-                <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.onChange.bind(this)}
-                  error={errors.password}
-                />
+                <div className="form-group row">
+                  <label htmlFor="email" className="col-sm-2 col-form-label">
+                    Email:
+                  </label>
+                  <div className="col-sm-10">
+                    <TextFieldGroup
+                      placeholder="Email Address"
+                      name="email"
+                      type="email"
+                      value={this.state.email}
+                      onChange={this.onChange.bind(this)}
+                      error={errors.email}
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label htmlFor="password" className="col-sm-2 col-form-label">
+                    Password:
+                  </label>
+                  <div className="col-sm-10">
+                    <TextFieldGroup
+                      placeholder="Password"
+                      name="password"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.onChange.bind(this)}
+                      error={errors.password}
+                    />
+                  </div>
+                </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>

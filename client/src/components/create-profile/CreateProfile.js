@@ -7,6 +7,9 @@ import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import { createProfile } from '../../actions/profileActions';
+import createProfileImage from '../../img/createprofile.png'; 
+import './createProfile.css';
+
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -173,10 +176,21 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create Your Profile</h1>
+              {/* <h1 className="display-4 text-center">Create Your Profile</h1> */}
+              <img
+                src={createProfileImage}
+                alt="Signup"
+                style={{
+                  width: '200px',
+                  position: 'relative',
+                  top: '0',
+                  right: '0',
+                }}
+              />
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
               </p>
+              
               <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
@@ -214,14 +228,19 @@ class CreateProfile extends Component {
                   info="State"
                 />
 
-                <TextAreaFieldGroup
-                  placeholder="Short Bio"
-                  name="bio"
-                  value={this.state.bio}
-                  onChange={this.onChange}
-                  error={errors.bio}
-                  info="Tell us a little about yourself"
-                />
+                <div className="mb-3">
+                  <label htmlFor="bio">Short Bio</label>
+                  <TextAreaFieldGroup
+                    label="Short Bio"
+                    name="bio"
+                    value={this.state.bio}
+                    onChange={this.onChange}
+                    error={errors.bio}
+                    info="Tell us a little about yourself"
+                  />
+                </div>  
+
+
 
                 <div className="mb-3">
                   <button

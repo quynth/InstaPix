@@ -5,6 +5,7 @@ import { registerUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import TextFieldGroup from '../common/TextFieldGroup';
+import signupImage from '../../img/signup.jpg';
 
 class Register extends Component {
   constructor() {
@@ -15,11 +16,13 @@ class Register extends Component {
       password: '',
       password2: '',
       errors: {},
-      info: 'This site uses Gravatar so if you want a profile image, use a Gravatar email',
+      info: 'This site uses Gravatar. If you want a profile image, use a Gravatar email.',
+      agreedToTerms: false,
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
   onChange(e) {
@@ -39,6 +42,10 @@ class Register extends Component {
     this.props.registerUser(newUser, this.props.history);
   }
 
+  handleCheckboxChange(e) {
+    this.setState({ agreedToTerms: e.target.checked });
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
@@ -46,14 +53,25 @@ class Register extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, agreedToTerms } = this.state;
     const { info } = this.state;
     return (
-      <div className="register">
+      <div className="register" style={{ overflowY: 'scroll', height: '100vh' }}>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
+              <h1 className="display-4 text-center">Sign Up</h1>  
+              <img
+                src={signupImage}
+                alt="Signup"
+                style={{
+                  width: '200px',
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                }}
+              />
+              
               <p className="lead text-center">Create your InstaPix account</p>
               <form noValidate onSubmit={this.onSubmit.bind(this)}>
                 <TextFieldGroup
@@ -92,6 +110,21 @@ class Register extends Component {
                   onChange={this.onChange.bind(this)}
                   error={errors.password2}
                 />
+
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="exampleCheck"
+                      checked={agreedToTerms}
+                      onChange={this.handleCheckboxChange}
+                    />
+                    <label className="form-check-label" htmlFor="exampleCheck">
+                      By checking this box, you are agreeing to our terms of service
+                    </label>
+                  </div>
+                </div>
 
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
